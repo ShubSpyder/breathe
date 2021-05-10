@@ -1,0 +1,19 @@
+:root {
+	--main-bg-color: #fff;
+	--outter-circle-bg: #ffd1b3;
+	--inner-circle-bg: #ff8533;
+	--outter-circle-border: #ffa366;
+}
+
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	font-family: Arial, Arial, Helvetica, sans-serif;
+	font-size: 1rem;
+	line-height: 1.6;
+	background: var(--main-bg-color);
+}
