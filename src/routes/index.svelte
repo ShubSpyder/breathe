@@ -1,2 +1,17 @@
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
+<script>
+	import BreathingCircle from '../components/BreathingCircle.svelte';
+	// examples of breathingCircle Component
+	const breathingCircleProps = {
+		size: '300px',
+		durationBreathe: 3,
+		durationHold: 2
+	};
+	const breathingCircleProps2 = {
+		size: '200px',
+		durationBreathe: 2,
+		durationHold: 3
+	};
+</script>
+
+<BreathingCircle {...breathingCircleProps} />
+<BreathingCircle {...breathingCircleProps2} />
