@@ -1,17 +1,27 @@
 <script>
 	import BreathingCircle from '../components/BreathingCircle.svelte';
-	// examples of breathingCircle Component
+
 	const breathingCircleProps = {
-		size: '300px',
-		durationBreathe: 3,
-		durationHold: 2
-	};
-	const breathingCircleProps2 = {
-		size: '200px',
-		durationBreathe: 2,
-		durationHold: 3
+		size: '16rem',
+		durationHold: 4,
+		durationInhale: 4,
+		durationExhale: 4
 	};
 </script>
 
-<BreathingCircle {...breathingCircleProps} />
-<BreathingCircle {...breathingCircleProps2} />
+<div class="circle-container">
+	<BreathingCircle {...breathingCircleProps} />
+</div>
+
+<style>
+	@import '../styles/global.css';
+
+	.circle-container {
+		height: 70vh;
+		width: 100vw;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+	}
+</style>

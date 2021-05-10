@@ -2,9 +2,12 @@
 	import { fly } from 'svelte/transition';
 
 	// props I hope self explanatory
-	export let size = '200px';
-	export let durationBreathe = 3;
-	export let durationHold = 2;
+	export let size;
+	export let durationHold;
+	export let durationInhale;
+	export let durationExhale;
+
+	// console.log({ durationInhale }, { durationExhale });
 
 	let changeDirection = false;
 	let hold = false;
@@ -14,7 +17,7 @@
 		hold = false;
 		setTimeout(() => {
 			holdBreathe();
-		}, durationBreathe * 1000);
+		}, durationHold * 1000);
 	}
 
 	function holdBreathe() {
@@ -31,31 +34,49 @@
 	<div class="outer-circle">
 		<div
 			class="inner-circle absolute"
-			style="transition: {durationBreathe}s; transform:scale({changeDirection ? 0.5 : 1})"
+			style="transition: {changeDirection
+				? durationExhale
+				: durationInhale}s; transform:scale({changeDirection ? 0.5 : 1})"
 		/>
 		{#if hold}
 			<p in:fly={{ y: 10 }} out:fly={{ y: 10 }}>Hold</p>
-		{/if}
-		{#if !hold}
-			<p in:fly={{ y: -10 }} out:fly={{ y: -10 }}>{changeDirection ? 'Inhale' : 'Exhale'}</p>
+		{:else}
+			<p in:fly={{ y: -10 }} out:fly={{ y: -10 }}>{changeDirection ? 'Exhale' : 'Inhale'}</p>
 		{/if}
 	</div>
 </div>
 
 <style>
+	@import '../styles/global.css';
+
 	.container {
 		@apply relative;
 	}
 	div {
-		@apply rounded-full block;
+		@apply rounded-full;
+		@apply block;
 	}
 	.outer-circle {
-		@apply items-center w-full justify-center h-full absolute bg-blue-100 transition flex;
+		@apply items-center;
+		@apply w-full;
+		@apply justify-center;
+		background: var(--outter-circle-bg);
+		@apply h-full;
+		@apply absolute;
+		@apply transition;
+		@apply flex;
+		border: 1.2px solid var(--outter-circle-border);
 	}
 	.outer-circle > p {
-		@apply absolute transition;
+		@apply absolute;
+		@apply transition;
+		color: #fff;
 	}
 	.inner-circle {
-		@apply w-full h-full absolute bg-blue-200;
+		width: 92%;
+		height: 92%;
+		border-radius: 50%;
+		@apply absolute;
+		background: var(--inner-circle-bg);
 	}
 </style>
