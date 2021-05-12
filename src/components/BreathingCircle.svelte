@@ -1,18 +1,18 @@
-<script>
+<script lang="ts">
 	import { fly } from 'svelte/transition';
 
 	// props I hope self explanatory
-	export let size;
-	export let durationHold;
-	export let durationInhale;
-	export let durationExhale;
+	export let size : string;
+	export let durationHold : number;
+	export let durationInhale: number;
+	export let durationExhale: number;
 
 	// console.log({ durationInhale }, { durationExhale });
 
-	let changeDirection = false;
+	let changeDirection = true;
 	let hold = false;
 
-	function inhale() {
+	function inhale() : void{
 		changeDirection = !changeDirection;
 		hold = false;
 		setTimeout(() => {
@@ -20,7 +20,7 @@
 		}, durationHold * 1000);
 	}
 
-	function holdBreathe() {
+	function holdBreathe(): void {
 		hold = true;
 		setTimeout(() => {
 			inhale();

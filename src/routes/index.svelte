@@ -1,7 +1,7 @@
-<script>
+<script lang="ts">
 	import BreathingCircle from '../components/BreathingCircle.svelte';
 
-	const breathingCircleProps = {
+	const breathingCircleProps : object= {
 		size: '16rem',
 		durationHold: 4,
 		durationInhale: 4,
